@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
+    "axios": "^1.9.0",
+    "bcrypt": "^6.0.0",
+    "compromise": "^14.14.4",
+    "config": "^4.0.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
+    "livereload": "^0.9.3",
+    "mongodb": "^6.17.0",
+    "mongoose": "^8.15.1",
+    "postcss": "^8.5.4",
+    "reload": "^2.2.0",
+    "sheryjs": "^1.0.0-beta.0.1.8",
+    "tailwindcss": "^4.1.8",
+    "vite": "^6.3.5"
+  },
+  "name": "domain-gen1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

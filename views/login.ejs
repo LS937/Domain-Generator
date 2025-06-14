@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="container relative">
+        <% if(error && error.length > 0) { %>
+            <div class="alert alert-danger fixed top-0 left-1/2 transform -translate-x-1/2 w-96 text-center py-3 px-4 bg-red-500 text-white rounded-b-lg shadow-lg z-50" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0) { %>
+            <div class="alert alert-success fixed top-0 left-1/2 transform -translate-x-1/2 w-96 text-center py-3 px-4 bg-green-500 text-white rounded-b-lg shadow-lg z-50" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+        <div class="main h-screen w-full flex">
+            <div class="left w-[50%] h-full">
+                <div class="form flex flex-col items-center justify-center h-full">
+                    <h3 class="mb-5 text-2xl underline">Welcome back</h3>
+                    <form action="/login" method="post">
+                        <div class="flex flex-col items-center justify-center gap-5">
+                            <input class="border px-3 py-2 rounded-lg border-gray-600" type="email" placeholder="Email" required, name="email">
+                            <input class="border px-3 py-2 rounded-lg border-gray-600" type="password" placeholder="Password" required name="password">
+                            <input type="submit" value="Login" class="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer">
+                            <p class="text-sm">Don't have an account? <a href="/register" class="text-blue-500">Register</a></p>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="right w-[50%] h-full">
+                    <img class="h-full w-full object-contain" src="/images/cartoon.jpeg" alt="Cartoon holding a board"/>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
