@@ -84,7 +84,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) f
 
 ## 👥 Authors
 
-- Your Name - Initial work
+- Lavish Singla - Initial work
 
 ## 🙏 Acknowledgments
 
@@ -94,7 +94,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) f
 
 ## 📞 Support
 
-For support, please open an issue in the GitHub repository or contact [your-email@example.com]
+For support, please open an issue in the GitHub repository or contact mr.singla2005@gmail.com
 
 ## 🔄 Future Improvements
 
