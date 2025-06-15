@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 const dbgr = require("debug")("development:mongoose");
-const config = require("config");
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(`${config.get("MONGODB_URI")}`);
+    if (!process.env.MONGODB_URI) {
+      throw new Error('MONGODB_URI is not defined in environment variables');
+    }
+    const conn = await mongoose.connect(process.env.MONGODB_URI);
     dbgr("MongoDB Connected Successfully");
     return conn;
   } catch (error) {

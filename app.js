@@ -36,7 +36,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI || config.get("MONGODB_URI"),
+        mongoUrl: process.env.MONGODB_URI,
         ttl: 14 * 24 * 60 * 60 // = 14 days
     }),
     cookie: { secure: process.env.NODE_ENV === 'production' }
@@ -213,7 +213,7 @@ app.post("/delete-domain", isLoggedIn, async (req, res) => {
     else{
       res.redirect("/domain");
     }
-})
+});
 
 const PORT = process.env.PORT || 3000;
 
