@@ -36,7 +36,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI || 'mongodb+srv://lavish-2005:singla%40003@domain-generator.yjdhz1s.mongodb.net/domainGenerator?retryWrites=true&w=majority',
+        mongoUrl: process.env.MONGODB_URI || config.get("MONGODB_URI"),
         ttl: 14 * 24 * 60 * 60 // = 14 days
     }),
     cookie: { secure: process.env.NODE_ENV === 'production' }
