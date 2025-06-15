@@ -14,6 +14,15 @@ const db = require("./config/mongoose-connection");
 
 require('dotenv').config();
 
+// Handle MongoDB connection errors
+db.on('error', (err) => {
+    console.error('MongoDB connection error:', err);
+});
+
+db.once('open', () => {
+    console.log('MongoDB connection established successfully');
+});
+
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
