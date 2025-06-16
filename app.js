@@ -105,8 +105,8 @@ app.get("/results", isLoggedIn, async (req, res) => {
   suggestions = [...new Set(suggestions)].filter(Boolean).slice(0, 8);
 
   // GoDaddy API key and secret (use OTE for testing)
-  const apiKey = "3mM44Ywf7agJwo_CBfPXjn5c2Q7tYZ6FGoVJ6";
-  const apiSecret = "7TVF4FTZNR5wn6ULqwSeTP"; // Not needed for OTE public endpoints
+  const apiKey = process.env.GODADDY_API_KEY;
+  const apiSecret = process.env.GODADDY_API_SECRET; // Not needed for OTE public endpoints
 
   const availability = {};
 
