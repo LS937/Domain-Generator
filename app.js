@@ -95,7 +95,21 @@ app.get("/results", isLoggedIn, async (req, res) => {
   combos = combos.concat(keywords);
 
 
-  const tlds = [".com", ".co", ".shop", ".online"];
+  const tlds = [
+    ".com",
+    ".net",
+    ".org",
+    ".io",
+    ".ai",
+    ".co",
+    ".dev",
+    ".app",
+    ".xyz",
+    ".me",
+    ".tech",
+    ".online",
+    ".shop"
+  ];
   tlds.forEach((tld) => {
     combos.forEach((base) => {
       if (base) suggestions.push(base.toLowerCase() + tld);
@@ -215,8 +229,8 @@ app.post("/delete-domain", isLoggedIn, async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3000;
+let port = process.env.PORT || 3000;
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Server is running on port ${port}`);
 });
