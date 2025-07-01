@@ -15,14 +15,7 @@ const db = require("./config/mongoose-connection");
 
 require('dotenv').config();
 
-// Handle MongoDB connection errors
-db.on('error', (err) => {
-    console.error('MongoDB connection error:', err);
-});
 
-db.once('open', () => {
-    console.log('MongoDB connection established successfully');
-});
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -58,14 +51,12 @@ app.get("/", (req, res) => {
 })
 
 app.get('/domain', isLoggedIn, async (req, res) => {
-    let user = req.user;
-    await userModel.findOne({email: user.email}).populate("savedDomains");
-    res.render('domain',{showResults: false, description: "", suggestions: [], user});
+  let user = await userModel.findOne({email: req.user.email});
+  res.render('domain',{showResults: false, description: "", suggestions: [], user});
 });
 
 app.get("/results", isLoggedIn, async (req, res) => {
-  let user = req.user;
-  await userModel.findOne({email: user.email}).populate("savedDomains"); //showing the saved dommains in the results page
+  let user = await userModel.findOne({email: req.user.email});
   let { description } = req.query;
   let suggestions = [];
 
@@ -231,6 +222,6 @@ app.post("/delete-domain", isLoggedIn, async (req, res) => {
 
 let port = process.env.PORT || 3000;
 
-app.listen(port, '0.0.0.0', () => {
+app.listen(port, "0.0.0.0",() => {
     console.log(`Server is running on port ${port}`);
 });
