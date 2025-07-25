@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-// Session configuration with MongoDB store
+
 app.use(session({
     secret: process.env.JWT_KEY || 'your-secret-key',
     resave: false,
@@ -35,10 +35,10 @@ app.use(session({
     cookie: { secure: process.env.NODE_ENV === 'production' }
 }));
 
-// Flash messages setup
+
 app.use(flash());
 
-// Make flash messages available to all views
+
 app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
@@ -51,12 +51,19 @@ app.get("/", (req, res) => {
 })
 
 app.get('/domain', isLoggedIn, async (req, res) => {
+  console.time('Find user domain route');
   let user = await userModel.findOne({email: req.user.email});
+  console.timeEnd('Find user domain route');
+
   res.render('domain',{showResults: false, description: "", suggestions: [], user});
 });
 
 app.get("/results", isLoggedIn, async (req, res) => {
+  console.time('Find user results route');
   let user = await userModel.findOne({email: req.user.email});
+  console.timeEnd('Find user results route');
+
+
   let { description } = req.query;
   let suggestions = [];
 
@@ -109,7 +116,7 @@ app.get("/results", isLoggedIn, async (req, res) => {
 
   suggestions = [...new Set(suggestions)].filter(Boolean).slice(0, 8);
 
-  // GoDaddy API key and secret (use OTE for testing)
+  // GoDaddy API key and secret
   const apiKey = process.env.GODADDY_API_KEY;
   const apiSecret = process.env.GODADDY_API_SECRET; // Not needed for OTE public endpoints
 
@@ -194,8 +201,13 @@ app.post("/createUser", async (req, res) => {
 app.post("/save-domain", isLoggedIn, async (req, res) => {
     let user = await userModel.findOne({ email: req.user.email });
     let { domain, description } = req.body;
-    user.savedDomains.push(domain);
-    await user.save();
+
+    if(user.savedDomains.indexOf(domain) == -1) {   
+      user.savedDomains.push(domain);
+      await user.save();
+    }
+
+
     // Redirect with description as a query parameter
     res.redirect(`/results?description=${encodeURIComponent(description)}`);
 });
