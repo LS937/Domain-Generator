@@ -36,7 +36,6 @@ app.use(session({
     cookie: { secure: process.env.NODE_ENV === 'production' }
 }));
 
-
 app.use(flash());
 
 
