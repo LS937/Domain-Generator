@@ -19,7 +19,7 @@
     </head>
 
 <body class=" bg-white w-full min-h-screen">
-    <div id="main" class="w-full bg-white">
+    <div id="main" class="w-full bg-white selection:bg-fuchsia-300">
         <div id="home" class="w-full min-h-screen">
             <div id="nav" class="flex items-center justify-between w-full px-[50px] py-[30px]">
                 <img class="magnet w-[100px] text-2xl" src="/media/logo.png" alt="">
@@ -128,82 +128,6 @@
     <% } %>
     </div>
 
-<!--         
-        <div id="featured" class="px-[15vw] py-[10vw]">
-            <div class="fheading">
-                <h1 class="leading-none text-[4vw] font-normal">featured</h1>
-                <h1 class="leading-none text-[4vw] font-normal text-transparent" style="-webkit-text-stroke: 1px #000;">projects</h1>
-            </div>
-            <div id="fimages" class="flex justify-between w-full h-[100vh] mt-[5vw]">
-                <div id="fleft" class="overflow-hidden w-[45%] h-full">
-                    <div class="fleftelm flex flex-col justify-center w-full h-full">
-                        <h3 class="text-[1.3vw] font-normal">Riyadh</h3>
-                        <h1 class="text-[2.5vw] leading-none font-normal capitalize my-[1.5vw]">official website of riyadh, saudi arabia's capital.</h1>
-                        <h4 class="opacity-50">design, development, product</h4>
-                    </div>
-                    <div class="fleftelm flex flex-col justify-center w-full h-full">
-                        <h3 class="text-[1.3vw] font-normal">Riyadh</h3>
-                        <h1 class="text-[2.5vw] leading-none font-normal capitalize my-[1.5vw]">official website of riyadh, saudi arabia's capital.</h1>
-                        <h4 class="opacity-50">design, development, product</h4>
-                    </div>
-                    <div class="fleftelm flex flex-col justify-center w-full h-full">
-                        <h3 class="text-[1.3vw] font-normal">Riyadh</h3>
-                        <h1 class="text-[2.5vw] leading-none font-normal capitalize my-[1.5vw]">official website of riyadh, saudi arabia's capital.</h1>
-                        <h4 class="opacity-50">design, development, product</h4>
-                    </div>
-                    <div class="fleftelm last flex flex-col justify-center w-full h-full">
-                        <h3 class="text-[1.3vw] font-normal">Riyadh</h3>
-                        <h1 class="text-[2.5vw] leading-none font-normal capitalize my-[1.5vw]">official website of riyadh, saudi arabia's capital.</h1>
-                        <h4 class="opacity-50">design, development, product</h4>
-                    </div>
-                </div>
-                <div id="fright" class="flex items-center justify-end w-[45%] h-full">
-                    <div class="images w-full h-full">
-                        <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1692343814412-cbe23ff32765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=767&q=80" alt="">
-                        <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1609428079875-ae186c562aff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=689&q=80" alt="">
-                        <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1614633833026-0820552978b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="">
-                        <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="btndiv flex items-center justify-center">
-                <button class="magnet px-[2.5vw] py-[1.3vw] rounded-full border-2 border-[#e6e6e6] bg-white text-[1vw] font-medium tracking-[-1px]">view all products</button>
-            </div>
-        </div>
-        <div id="dev" class="w-full px-[15vw] py-[5vw]"> -->
-            <!-- <h1 class="text-[3.8vw] font-normal w-[60%] leading-none">Development and design resources</h1>
-            <p class="text-[1.5vw] mt-[3vw] tracking-[-0.5px] w-[60%]">
-                We regularly release design courses, offer advice to newbie designers, walk you through creating awesome
-                effects, and share source files.
-            </p>
-        </div>
-        <div id="slides" class="px-[10vw] py-[3vw] flex justify-between">
-            <div class="slide w-[30%]">
-                <div class="img w-full h-[270px] overflow-hidden rounded-[10px] bg-yellow-400">
-                    <img class="w-full h-full object-cover" src="https://cdn.cuberto.com/cb/upload/40bf072f506912f62412b0de381e350d.png" alt="">
-                </div>
-                <div class="tag w-fit rounded-full px-[22px] py-[10px] bg-[#f7f7f7] my-[20px]">Design Course</div>
-                <h3 class="text-[1.4vw] font-normal tracking-[-0.5px]">How To Make Epic Website // Frontend development</h3>
-            </div>
-            <div class="slide w-[30%]">
-                <div class="img w-full h-[270px] overflow-hidden rounded-[10px] bg-yellow-400">
-                    <img class="w-full h-full object-cover" src="https://cdn.cuberto.com/cb/upload/40bf072f506912f62412b0de381e350d.png" alt="">
-                </div>
-                <div class="tag w-fit rounded-full px-[22px] py-[10px] bg-[#f7f7f7] my-[20px]">Design Course</div>
-                <h3 class="text-[1.4vw] font-normal tracking-[-0.5px]">How To Make Epic Website // Frontend development</h3>
-            </div>
-            <div class="slide w-[30%]">
-                <div class="img w-full h-[270px] overflow-hidden rounded-[10px] bg-yellow-400">
-                    <img class="w-full h-full object-cover" src="https://cdn.cuberto.com/cb/upload/40bf072f506912f62412b0de381e350d.png" alt="">
-                </div>
-                <div class="tag w-fit rounded-full px-[22px] py-[10px] bg-[#f7f7f7] my-[20px]">Design Course</div>
-                <h3 class="text-[1.4vw] font-normal tracking-[-0.5px]">How To Make Epic Website // Frontend development</h3>
-            </div>
-        </div>
-        <div class="btndiv flex items-center justify-center">
-            <button class="magnet px-[2.5vw] py-[1.3vw] rounded-full border-2 border-[#e6e6e6] bg-white text-[1vw] font-medium tracking-[-1px]">view all products</button>
-        </div>
-        -->
     </div> 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>

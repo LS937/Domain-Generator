@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container relative">
+    <div class="container relative selection:bg-fuchsia-300">
         <% if(error && error.length > 0) { %>
             <div class="alert alert-danger fixed top-0 left-1/2 transform -translate-x-1/2 w-96 text-center py-3 px-4 bg-red-500 text-white rounded-b-lg shadow-lg z-50" role="alert">
                 <%= error %>
@@ -21,12 +24,12 @@
         <div class="main h-screen w-full flex justify-between items-center">
             <div class="left w-[50%] h-full">
                 <div class="form flex flex-col items-center justify-center h-full">
-                    <h3 class="mb-5 text-2xl underline">Welcome back</h3>
+                    <h3 class="mb-5 text-3xl underline font-['Noto_Sans'] font-semibold">Welcome back</h3>
                     <form action="/login" method="post">
                         <div class="flex flex-col items-center justify-center gap-5">
-                            <input class="border px-3 py-2 rounded-lg border-gray-600" type="email" placeholder="Email" required, name="email">
-                            <input class="border px-3 py-2 rounded-lg border-gray-600" type="password" placeholder="Password" required name="password">
-                            <input type="submit" value="Login" class="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer">
+                            <input class="border px-4 py-3 rounded-lg border-gray-600" type="email" placeholder="Email" required, name="email">
+                            <input class="border px-4 py-3 rounded-lg border-gray-600" type="password" placeholder="Password" required name="password">
+                            <input type="submit" value="Login" class="bg-blue-500 text-white px-5 py-3 rounded-lg cursor-pointer">
                             <p class="text-sm">Don't have an account? <a href="/register" class="text-blue-500">Register</a></p>
 
                         </div>

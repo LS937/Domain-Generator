@@ -17,12 +17,4 @@ const connectDB = async () => {
 
 connectDB();
 
-mongoose.set("debug", function (coll, method, query, doc, options) {
-  console.log(
-    `Mongoose: ${coll}.${method}(${JSON.stringify(query)}, ${JSON.stringify(
-      doc
-    )})`
-  );
-});
-
 module.exports = mongoose.connection;

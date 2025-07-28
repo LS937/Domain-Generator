@@ -1,6 +1,7 @@
 const express = require('express');
-const nlp = require("compromise");
 const app = express();
+
+const nlp = require("compromise");
 const path = require('path');
 const axios = require("axios");
 const bcrypt = require('bcrypt');
@@ -51,17 +52,17 @@ app.get("/", (req, res) => {
 })
 
 app.get('/domain', isLoggedIn, async (req, res) => {
-  console.time('Find user domain route');
+  // console.time('Find user domain route');
   let user = await userModel.findOne({email: req.user.email});
-  console.timeEnd('Find user domain route');
+  // console.timeEnd('Find user domain route');
 
   res.render('domain',{showResults: false, description: "", suggestions: [], user});
 });
 
 app.get("/results", isLoggedIn, async (req, res) => {
-  console.time('Find user results route');
+  // console.time('Find user results route');
   let user = await userModel.findOne({email: req.user.email});
-  console.timeEnd('Find user results route');
+  // console.timeEnd('Find user results route');
 
 
   let { description } = req.query;
@@ -73,17 +74,21 @@ app.get("/results", isLoggedIn, async (req, res) => {
     .nouns()
     .out("array")
     .map((w) => w.replace(/\s+/g, ""));
+  
   let adjectives = doc
     .adjectives()
     .out("array")
     .map((w) => w.replace(/\s+/g, ""));
+
   let keywords = [...new Set([...adjectives, ...nouns])].filter(Boolean);
 
   
-  if (keywords.length === 0)
+  if (keywords.length === 0){
     keywords = description.split(" ").map((w) => w.replace(/\s+/g, ""));
-
+  }
+  
   let combos = [];
+
   for (let i = 0; i < keywords.length; i++) {
     for (let j = 0; j < keywords.length; j++) {
       if (i !== j) combos.push(keywords[i] + keywords[j]);
@@ -108,6 +113,7 @@ app.get("/results", isLoggedIn, async (req, res) => {
     ".online",
     ".shop"
   ];
+
   tlds.forEach((tld) => {
     combos.forEach((base) => {
       if (base) suggestions.push(base.toLowerCase() + tld);
@@ -116,9 +122,11 @@ app.get("/results", isLoggedIn, async (req, res) => {
 
   suggestions = [...new Set(suggestions)].filter(Boolean).slice(0, 8);
 
+
+
   // GoDaddy API key and secret
   const apiKey = process.env.GODADDY_API_KEY;
-  const apiSecret = process.env.GODADDY_API_SECRET; // Not needed for OTE public endpoints
+  const apiSecret = process.env.GODADDY_API_SECRET;
 
   const availability = {};
 
@@ -136,7 +144,7 @@ app.get("/results", isLoggedIn, async (req, res) => {
         );
         availability[domain] = resp.data.available;
     } catch (e) {
-        availability[domain] = null; // error/unknown
+        availability[domain] = null; //if null 
     }
 }
   res.render("domain", { showResults: true, description, suggestions, availability, user });
@@ -179,10 +187,12 @@ app.get("/register", (req, res) => {
 
 app.post("/createUser", async (req, res) => {
   let {username, email, password} = req.body;
+
   if(await userModel.findOne({email})) {
-    req.flash('error', 'User already exists with this email');
+    req.flash('error', 'User already exists with this email. Please try logging in.');
     return res.redirect('/register');
   }
+
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(password, salt, async (err, hash) => {
       let createdUser = await userModel.create({
@@ -220,10 +230,12 @@ app.post("/logout", (req, res) => {
 app.post("/delete-domain", isLoggedIn, async (req, res) => {
     let user = await userModel.findOne({email: req.user.email});
     let { domain, from, description } = req.body;
+
     user.savedDomains = user.savedDomains.filter(function(d){
         return d !== domain;
     })
     await user.save();
+    
     if(from === "results" && description) {
       res.redirect(`/results?description=${encodeURIComponent(description)}`);
     }
