@@ -16,7 +16,7 @@ const db = require("./config/mongoose-connection");
 
 require('dotenv').config();
 
-
+app.set('trust proxy', 1);
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
